@@ -1,18 +1,13 @@
 # Unity 3D metaballs
-Unity 3D implementation of marching cubes algorithm for rendering metaballs. Metaballs can be used for gameplay purposes (gels in Valve's Portal 2), or as a decoration, as shown in the image below. They can also be used to visualise various fields in physics (for example, each metaball can represent single point charge, and electrostatic potetial due to point charge equation can be used as a falloff function).
+Unity 3D implementation of marching cubes algorithm for rendering metaballs. Based on [implementation by Dario Zubovic](github.com/dario-zubovic).
 
-![](https://github.com/dario-zubovic/metaballs/raw/master/gif1.gif)
 ![](https://github.com/dario-zubovic/metaballs/raw/master/gif2.gif)
 
-Metaball functions are evaluated on GPU. Falloff functions can be chosen in the compute shader with a define statements. Marching cubes algorithm partially executes on GPU and partially on CPU.
-
-Thanks to Filip Ugrin for providing 3d models for example scene!
+Metaball functions are evaluated on GPU. Falloff functions can be chosen in the compute shader with a define statements.
 
 ## TODO list:
-* ~~move marching cubes algorithm to GPU~~ partially moved marching cubes to compute shader, but there is still room for improvement
-* implement some kind of subdivision smoothing algorithm
-* create example scene with rigidbody metaballs
-* create example scene with electric potential visualization
+* Improve GPU memory and compute by using geometry shaders to instantiate triangles
+* implement smooth normals
 
 ## References:
 * William E. Lorensen and Harvey E. Cline. 1987. Marching cubes: A high resolution 3D surface construction algorithm. In Proceedings of the 14th annual conference on Computer graphics and interactive techniques (SIGGRAPH '87), Maureen C. Stone (Ed.). ACM, New York, NY, USA, 163-169.
