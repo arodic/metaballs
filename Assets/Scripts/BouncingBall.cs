@@ -9,43 +9,43 @@ public class BouncingBall : MetaBall {
 
     public override void Start() {
         base.Start();
-        this.direction = Random.onUnitSphere;
-        this.container = this.GetComponentInParent<Container>();
+        direction = Random.onUnitSphere;
+        container = GetComponentInParent<Container>();
     }
 
     public void Update() {
-        this.updatePosition(Time.deltaTime);
+        updatePosition(Time.deltaTime);
     }
 
     public void updatePosition(float dt) {
-        float posX = this.transform.position.x, posY = this.transform.position.y, posZ = this.transform.position.z;
-        Vector3 containerPosition = this.container.transform.position;
-        Vector3 containerScale = this.container.transform.localScale;
+        float posX = transform.position.x, posY = transform.position.y, posZ = transform.position.z;
+        Vector3 containerPosition = container.transform.position;
+        Vector3 containerScale = container.transform.localScale;
 
-        if(posX + this.radius + this.container.safeZone > containerPosition.x + containerScale.x / 2) {
+        if(posX + radius + container.safeZone > containerPosition.x + containerScale.x / 2) {
             posX -= 0.01f;
-            this.direction = Vector3.Reflect(this.direction, Vector3.left);
-        } else if(posX - this.radius - this.container.safeZone < containerPosition.x - containerScale.x / 2) {
+            direction = Vector3.Reflect(direction, Vector3.left);
+        } else if(posX - radius - container.safeZone < containerPosition.x - containerScale.x / 2) {
             posX += 0.01f;
-            this.direction = Vector3.Reflect(this.direction, Vector3.right);
+            direction = Vector3.Reflect(direction, Vector3.right);
         }
 
-        if(posY + this.radius + this.container.safeZone > containerPosition.y + containerScale.y / 2) {
+        if(posY + radius + container.safeZone > containerPosition.y + containerScale.y / 2) {
             posY -= 0.01f;
-            this.direction = Vector3.Reflect(this.direction, Vector3.down);
-        } else if(posY - this.radius - this.container.safeZone < containerPosition.y - containerScale.y / 2) {
+            direction = Vector3.Reflect(direction, Vector3.down);
+        } else if(posY - radius - container.safeZone < containerPosition.y - containerScale.y / 2) {
             posY += 0.01f;
-            this.direction = Vector3.Reflect(this.direction, Vector3.up);
+            direction = Vector3.Reflect(direction, Vector3.up);
         }
 
-        if(posZ + this.radius + this.container.safeZone > containerPosition.z + containerScale.z / 2) {
+        if(posZ + radius + container.safeZone > containerPosition.z + containerScale.z / 2) {
             posZ -= 0.01f;
-            this.direction = Vector3.Reflect(this.direction, Vector3.back);
-        } else if(posZ - this.radius - this.container.safeZone < containerPosition.z - containerScale.z / 2) {
+            direction = Vector3.Reflect(direction, Vector3.back);
+        } else if(posZ - radius - container.safeZone < containerPosition.z - containerScale.z / 2) {
             posZ += 0.01f;
-            this.direction = Vector3.Reflect(this.direction, Vector3.forward);
+            direction = Vector3.Reflect(direction, Vector3.forward);
         }
 
-        this.transform.position = new Vector3(posX, posY, posZ) + this.direction * speed * dt;
+        transform.position = new Vector3(posX, posY, posZ) + direction * speed * dt;
     }
 }
