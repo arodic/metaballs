@@ -16,10 +16,10 @@ void geom(triangle GeometryInput input[3], inout TriangleStream<VertexOutput> Ou
 {
      for (int i = 0; i < 3; i ++) {
          for (int k = 0; k < 15; k += 3) {
-            float3 v0 = getVertex(input[i].cubeIndex, k + 0);
+            float3 v0 = getVertex(input[i].cubeIndex, k + 2);
             if (v0.x == 0.0f) break; // early out when end of triTable array is reached.
             float3 v1 = getVertex(input[i].cubeIndex, k + 1);
-            float3 v2 = getVertex(input[i].cubeIndex, k + 2);
+            float3 v2 = getVertex(input[i].cubeIndex, k + 0);
             float3 normal = normalize(cross(normalize(v1 - v0), normalize(v2 - v0)));
             VertexOutput g0 = (VertexOutput)0;
             VertexOutput g1 = (VertexOutput)0;

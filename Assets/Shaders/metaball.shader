@@ -2,6 +2,7 @@
 
 Shader "Custom/Metaball" {
     Properties {
+
     }
     SubShader{
         Tags{
