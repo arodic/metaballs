@@ -2,12 +2,19 @@
 
 struct VertexIndices {
     int cubeIndex;
-    int lookupIndex;
+    //int lookupIndex0;
+    //int lookupIndex1;
+    //int lookupIndex2;
 };
 
 struct EdgeVertices {
     int index;
     float3 edge0, edge1, edge2, edge3, edge4, edge5, edge6, edge7, edge8, edge9, edge10, edge11;
+};
+
+struct VertexData {
+    float3 vertex;
+    float3 normal; // TODO: remove when using geometry
 };
 
 StructuredBuffer<VertexIndices> vertexIndicesBuffer;
@@ -29,8 +36,22 @@ float3 getVertexEdge(EdgeVertices vert, int i) {
     return vert.edge11;
 };
 
-float3 vertexLookup(int id) {
-    VertexIndices c = vertexIndicesBuffer[id];
-    EdgeVertices e = edgeVerticesBuffer[c.cubeIndex];
-    return getVertexEdge(e, triTable[e.index][c.lookupIndex]);
+//VertexData vertexLookup(int id) {
+//    VertexData o;
+//    VertexIndices c = vertexIndicesBuffer[id];
+//    EdgeVertices e = edgeVerticesBuffer[c.cubeIndex];
+//    o.vertex = getVertexEdge(e, triTable[e.index][c.lookupIndex0]);
+//    float3 pos1 = getVertexEdge(e, triTable[e.index][c.lookupIndex1]);
+//    float3 pos2 = getVertexEdge(e, triTable[e.index][c.lookupIndex2]);
+//    o.normal = normalize(cross(normalize(o.vertex - pos1), normalize(o.vertex - pos2)));
+//    return o;
+//};
+
+int getCubeIndex(int id) {
+    return vertexIndicesBuffer[id].cubeIndex;
+}
+
+float3 getVertex(int cubeIndex, int lookupIndex) {
+    EdgeVertices e = edgeVerticesBuffer[cubeIndex];
+    return getVertexEdge(e, triTable[e.index][lookupIndex]);
 };

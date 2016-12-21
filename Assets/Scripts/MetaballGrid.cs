@@ -21,10 +21,14 @@ struct GPUEdgeVertices {
     public Vector3 edge0, edge1, edge2, edge3, edge4, edge5, edge6, edge7, edge8, edge9, edge10, edge11;
 };
 
+
 struct GPUVertexIndices {
     public int cubeIndex;
-    public int lookupIndex;
+    // public int lookupIndex0;
+    // public int lookupIndex1;
+    // public int lookupIndex2;
 };
+
 
 public class MetaballGrid : MonoBehaviour {
     public int width, height, depth;
@@ -62,12 +66,16 @@ public class MetaballGrid : MonoBehaviour {
         this.metaballRenderer = metaballRenderer;
         this.shader = shader;
 
-        width = metaballRenderer.resolution;
-        height = metaballRenderer.resolution;
-        depth = metaballRenderer.resolution;
+        width = metaballRenderer.resolution * 8;
+        height = metaballRenderer.resolution * 8;
+        depth = metaballRenderer.resolution * 8;
 
         // prepare data for the marching cubes algorithm on GPU
-        vertexCount = width * height * depth * 15;
+        vertexCount = width * height * depth;
+
+        // if (!metaballRenderer.useGeometryShader)
+        //     vertexCount *= 15;
+
         vertexIndices = new GPUVertexIndices[vertexCount];
         vertIndex = 0;
         cubeIndex = 0;
@@ -75,21 +83,33 @@ public class MetaballGrid : MonoBehaviour {
             for (int y = 0; y < height; y++) {
                 for (int z = 0; z < depth; z++) {
                     cubeIndex = x + width * (y + height * z);
-                    for (int k = 0; k < 15; k += 3) {
+                    // if (metaballRenderer.useGeometryShader) {
                         vertexIndices[vertIndex].cubeIndex = cubeIndex;
-                        vertexIndices[vertIndex].lookupIndex = k + 0;
                         vertIndex ++;
-                        vertexIndices[vertIndex].cubeIndex = cubeIndex;
-                        vertexIndices[vertIndex].lookupIndex = k + 2;
-                        vertIndex ++;
-                        vertexIndices[vertIndex].cubeIndex = cubeIndex;
-                        vertexIndices[vertIndex].lookupIndex = k + 1;
-                        vertIndex ++;
-                    }
+                    // } else {
+                    //     for (int k = 0; k < 15; k += 3) {
+                    //         vertexIndices[vertIndex].cubeIndex = cubeIndex;
+                    //         vertexIndices[vertIndex].lookupIndex0 = k + 0;
+                    //         vertexIndices[vertIndex].lookupIndex1 = k + 2;
+                    //         vertexIndices[vertIndex].lookupIndex2 = k + 1;
+                    //         vertIndex ++;
+                    //         vertexIndices[vertIndex].cubeIndex = cubeIndex;
+                    //         vertexIndices[vertIndex].lookupIndex0 = k + 2;
+                    //         vertexIndices[vertIndex].lookupIndex1 = k + 1;
+                    //         vertexIndices[vertIndex].lookupIndex2 = k + 0;
+                    //         vertIndex ++;
+                    //         vertexIndices[vertIndex].cubeIndex = cubeIndex;
+                    //         vertexIndices[vertIndex].lookupIndex0 = k + 1;
+                    //         vertexIndices[vertIndex].lookupIndex1 = k + 0;
+                    //         vertexIndices[vertIndex].lookupIndex2 = k + 2;
+                    //         vertIndex ++;
+                    //     }
+                    // }
                 }
             }
         }
-        vertexIndicesBuffer = new ComputeBuffer(vertexIndices.Length, 8);
+        // TODO: remove lookup indices when using geometry shaders
+        vertexIndicesBuffer = new ComputeBuffer(vertexIndices.Length, 4);
         vertexIndicesBuffer.SetData(vertexIndices);
         initialized = false;
     }
@@ -214,6 +234,6 @@ public class MetaballGrid : MonoBehaviour {
         shader.SetInt("height", height);
         shader.SetFloat("threshold", metaballRenderer.threshold);
         // Run compute shader
-        shader.Dispatch(shaderKernel, width / 4, height / 4, depth / 4); // TODO: 8?
+        shader.Dispatch(shaderKernel, width / 8, height / 8, depth / 8);
     }
 }

@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class MetaballRenderer : MonoBehaviour {
-    [Range(1, 100)]
+    [Range(1, 25)]
     public int resolution = 10;
     [Range(0.01f, 10.0f)]
     public float threshold = 1;
     public ComputeShader computeShader;
     public Material material;
+    // public bool useGeometryShader = true;
 
     private MetaballGrid grid;
 

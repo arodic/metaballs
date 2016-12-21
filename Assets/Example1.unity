@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19661b331d4afbb4b88ebebaed28c66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 25
+  resolution: 10
   threshold: 4
   computeShader: {fileID: 7200000, guid: 9bcc9560470e2b4439e048851b4c0470, type: 3}
   material: {fileID: 2100000, guid: fc349da3bdf30e4469786e146c823cc1, type: 2}
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19661b331d4afbb4b88ebebaed28c66b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 25
+  resolution: 10
   threshold: 4
   computeShader: {fileID: 7200000, guid: 9bcc9560470e2b4439e048851b4c0470, type: 3}
   material: {fileID: 2100000, guid: fc349da3bdf30e4469786e146c823cc1, type: 2}
@@ -528,7 +528,7 @@ Transform:
   m_GameObject: {fileID: 816215539}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.134, y: -0.156, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.25026175, y: 0.2502618, z: 0.2502618}
   m_Children: []
   m_Father: {fileID: 522512122}
   m_RootOrder: 6
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   negativeBall: 0
-  radius: 0.15
+  radius: 0.12513089
   factor: 0
   metaballs: []
   metaballGrids: []
@@ -647,7 +647,7 @@ Transform:
   m_GameObject: {fileID: 1225438019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.215, y: -0.156, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.25026175, y: 0.2502618, z: 0.2502618}
   m_Children: []
   m_Father: {fileID: 522512122}
   m_RootOrder: 5
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   negativeBall: 0
-  radius: 0.15
+  radius: 0.12513089
   factor: 0
   metaballs: []
   metaballGrids: []
@@ -787,7 +787,7 @@ Transform:
   m_GameObject: {fileID: 1269549328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.134, y: 0.09899999, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.25026175, y: 0.2502618, z: 0.2502618}
   m_Children: []
   m_Father: {fileID: 522512122}
   m_RootOrder: 1
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   negativeBall: 0
-  radius: 0.15
+  radius: 0.12513089
   factor: 0
   metaballs: []
   metaballGrids: []
@@ -861,7 +861,7 @@ Transform:
   m_GameObject: {fileID: 1281768630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.215, y: 0.09899999, z: 0}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_LocalScale: {x: 0.16684115, y: 0.1668412, z: 0.1668412}
   m_Children: []
   m_Father: {fileID: 522512122}
   m_RootOrder: 2
@@ -905,7 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   negativeBall: 0
-  radius: 0.099999994
+  radius: 0.08342059
   factor: 0
   metaballs: []
   metaballGrids: []
@@ -935,7 +935,7 @@ Transform:
   m_GameObject: {fileID: 1340916053}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.048, y: 0.09899999, z: -0.32}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_LocalScale: {x: 0.16684115, y: 0.1668412, z: 0.1668412}
   m_Children: []
   m_Father: {fileID: 522512122}
   m_RootOrder: 3
@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   negativeBall: 0
-  radius: 0.099999994
+  radius: 0.08342059
   factor: 0
   metaballs: []
   metaballGrids: []
@@ -1091,7 +1091,7 @@ Transform:
   m_GameObject: {fileID: 2077307907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.048, y: -0.156, z: -0.32}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_LocalScale: {x: 0.16684115, y: 0.1668412, z: 0.1668412}
   m_Children: []
   m_Father: {fileID: 522512122}
   m_RootOrder: 4
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   negativeBall: 0
-  radius: 0.099999994
+  radius: 0.08342059
   factor: 0
   metaballs: []
   metaballGrids: []
