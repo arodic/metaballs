@@ -22,7 +22,7 @@ public class MetaballRenderer : MonoBehaviour {
         material.SetMatrix("objectToWorld", transform.localToWorldMatrix); // TODO: unity_ObjectToWorld not working
         material.SetBuffer("vertexIndicesBuffer", grid.vertexIndicesBuffer);
         material.SetBuffer("edgeVerticesBuffer", grid.edgeVerticesBuffer);
-        Graphics.DrawProcedural(MeshTopology.Triangles,  grid.vertexCount);
+        Graphics.DrawProceduralNow(MeshTopology.Triangles,  grid.vertexCount);
     }
 
     void OnEnable () {

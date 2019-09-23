@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 #include "vertexLookup.cginc"
 
 struct GeometryInput {
@@ -27,9 +29,9 @@ void geom(triangle GeometryInput input[3], inout TriangleStream<VertexOutput> Ou
             g0.normal = normal;
             g1.normal = normal;
             g2.normal = normal;
-            g0.pos = mul(UNITY_MATRIX_MVP, mul(objectToWorld, float4(v0, 1.0)));
-            g1.pos = mul(UNITY_MATRIX_MVP, mul(objectToWorld, float4(v1, 1.0)));
-            g2.pos = mul(UNITY_MATRIX_MVP, mul(objectToWorld, float4(v2, 1.0)));
+            g0.pos = UnityObjectToClipPos(mul(objectToWorld, float4(v0, 1.0)));
+            g1.pos = UnityObjectToClipPos(mul(objectToWorld, float4(v1, 1.0)));
+            g2.pos = UnityObjectToClipPos(mul(objectToWorld, float4(v2, 1.0)));
             OutputStream.Append(g0);
             OutputStream.Append(g1);
             OutputStream.Append(g2);
